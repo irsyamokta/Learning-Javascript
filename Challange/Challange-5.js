@@ -5,10 +5,10 @@ const nilai2 = [92,84,70,86,79,91]
 
 function solution(arrNilai) {
     let jumlah = 0;
-    for(let i = 0; i < arrNilai.length; i++){
-        jumlah = jumlah + arrNilai[i]
+    for(const i of arrNilai){
+        jumlah = jumlah + i
     }
-    
+
     let hasil = jumlah/arrNilai.length
     return console.log(parseFloat(hasil.toFixed(2)))
 }
