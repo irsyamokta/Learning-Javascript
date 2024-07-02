@@ -13,4 +13,5 @@ class Mahasiswa{
 let abdul = new Mahasiswa("Abdul Latif", "2211103003", "SI06A")
 let ani = new Mahasiswa("Ani Amrullah", "2211103004", "SI06B")
 
+console.log(abdul)
 abdul.belajar(10)
