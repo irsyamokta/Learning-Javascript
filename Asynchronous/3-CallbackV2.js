@@ -1,38 +1,41 @@
-const token = Math.floor(Math.random() * 1000)
-const pictures = ["1.jpg", "2.jpg", "3.jpg"]
+const token = Math.floor(Math.random() * 12345)
+const pictures = ['1.jpg', '2.jpg', '3.jpg']
 
 function login(username, callback) {
-    console.log("Data Sedang di Proses...")
+    console.log('Data Sedang Diproses...')
     setTimeout(() => {
-        callback({ token, username })
-    }, 1000)
-}
-
-function getUser(token, callback) {
-    console.log("API KEY Sedang di proses...")
-    setTimeout(() => {
-        if (token) {
-            callback({ apiKey: "XYZ123" })
-        }
+        callback({ username, token })
     }, 2000)
 }
 
-function getPictures(apiKey, callback) {
-    if (apiKey)
+function getUser(token, callback) {
+    console.log('APIKEY Diproses...')
+    const apiKey = { apiKey: 'XYZ123' }
+    if (token) {
         setTimeout(() => {
-            callback(pictures)
-        }, 3000)
+            callback(apiKey)
+        }, 1000)
+    }
 }
 
-login('pqryd', (response) => {
-    const { token } = response
-    // console.log(token)
-    getUser(token, (response) => {
-        const { apiKey } = response
-        // console.log(apiKey) 
-        getPictures(apiKey, (response) => {
-            const pic = response
-            console.log(pic)
+function getPictures(apiKey, callback) {
+    console.log('Data Gambar Diproses...')
+    if (apiKey){
+        setTimeout(() => {
+            callback(pictures)
+        }, 500)
+    }
+}
+
+login('Fadil', (result) => {
+    const token = result.token
+    const username = result.username
+    console.log(username)
+    getUser(token, (result) => {
+        const {apiKey} = result
+        console.log(apiKey)
+        getPictures(apiKey, (result) => {
+            console.log(result)
         })
     })
 })
